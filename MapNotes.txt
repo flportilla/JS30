@@ -47,65 +47,57 @@ o
     })
 
 
-
 ## Ejemplo de una función sencilla:
->   const numeros = [3, 10, 20, 50]
->
->   const dobles = numeros.map(numero => numero * 2) 
->
->   console.log(numeros) //[3, 10, 20, 50]
->
->   console.log(dobles) //[6, 20, 40, 100]
+    const numeros = [3, 10, 20, 50]
+    const dobles = numeros.map(numero => numero * 2) 
+    console.log(numeros) // => [3, 10, 20, 50]
+    console.log(dobles) // => [6, 20, 40, 100]
 
 
-const numeros = [3, 10, 20, 50]
-const dobles = numeros.map(elemento => elemento*2);
+## Ejemplo de map con objetos:
 
-console.log(numeros) // [3, 10, 20, 50] el array original conserva sus valores
-console.log(dobles) // [6, 20, 40, 100] "dobles" ahora contiene los valores del array original después de la función (2)
+    const productos = [{
+        id: "aAvVbBnNdDeeEfFggG025698",
+        nombre: "camiseta",
+        precio: 500
+    },
+    {
+        id: "aAvVbBnNdDeasERggG025698",
+        nombre: "camiseta",
+        precio: 2000
+    },
+    {
+        id: "aAvvvaaNdDeasERggG025698",
+        nombre: "camiseta",
+        precio: 1500
+    }]
+
+Crear una función con este array de objetos que aplique el 10% de descuento al precio del producto solamente si sobrepasa los 1000.
 
 
-/
-Sí el método map() se usa sin ninguna función (map() solo) hace lo mismo que slice(), entrega una copia del array original en una nueva variable
- /
+    const productosConDescuento = productos.map(function (elementos) {
+        if (elementos.precio < 1000) return elementos 
+    return {
+        ...elementos, 
+        precio: elementos.precio * 0.9 
+        }
+    })
+    console.log(productosConDescuento)
 
+Vamos a descomponer esta función de la siguiente manera:
 
-const copynumeros = numeros.map()
-console.log(copynumeros)// [3, 10, 20, 50]
+    const productosConDescuento = productos.map(function (elementos) 
 
+>Lo primero a resaltar es que la función se expresa como valor de una variable `const = productosConDescuento =`
 
-//ejemplo de map con objetos
+>Después del igual viene `productos.map` el array seguido del método `map(funcion (elementos))` en donde `elementos` equivale a cada uno de los elementos dentro del array, puede ser un string, un objeto, un número, un booleano etc. Es el nombre de los item que van dentro del array
 
-const productos = [{
-id: "ajkhsdjkasdHKJLAHSDKJH",
-nombre: "camiseta",
-precio: 500
-},
-{
-id: "ajkhsdjkasdHKJLAHSDKJH123",
-nombre: "camiseta",
-precio: 2000
-}, {
-id: "ajkhsdjkasdHKJLAHSDKJH456",
-nombre: "camiseta",
-precio: 1500
-}]
+>`if(elementos.precio < 1000) return elementos` Con esta línea filtramos los elementos dentro del array por precio y devolvemos los que no entran en la condición.
+>>Si `elementos.precio` es menor que `1000`, no hace nada y deja ese elemento intacto. Si por el contrario la condición no se cumple, devuelve el valor dentro de `elementos`
+ 
+    return {
+        ...elementos, 
+        precio: elementos.precio * 0.9 
+        }
+>En esta porción de código se reciben los elementos que no pasaron el filtro (los objetos que tienen un precio > a 1000) y los entrega `...elementos,` y reasigna la propiedad `precio` dentro del objeto a 90% (*0.9) utilizando la expresión `precio: elementos.precio * 0.9`
 
-//con el array anterior y usando map, aplique el 10% de descuento cuando el valor del producto sea 1000 o más
-
-//lo primero sería crear una nueva variable en la que se va a almacernar el producto
-
-const productosConDescuento = productos.map(function (elementos) {
-
-if (elementos.precio < 1000) return elementos //si el precio es menor a 1000, déjelo por fuera y seguimos trabajando en el resto
-//es como decir: si el precio es inferior a 1000 devuelva el resto y saque ese de lo que viene ahora
-//básicamente aquí filtro los elementos para descartar los que no quiero modificar
-return {
-...elementos, //copia todas las propiedades del elemento original.
-precio: elementos.precio0.9 // si dejo solo la línea de arriba me devuelve los precios tal cual entraron, aquí es donde se calcula el descuento
-}
-//el motivo de que esta función tenga dos return es porque hay un return del if y otro de la función como tal
-//si quito el segundo return el valor de productosConDescuento sería el primer return (el primer objeto completo) y dos undefined
-})
-
-console.log(productosConDescuento)

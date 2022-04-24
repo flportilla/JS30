@@ -1,4 +1,26 @@
+const productos = [{
+    id: "aAvVbBnNdDeeEfFggG025698",
+    nombre: "camiseta",
+    precio: 500
+},
+{
+    id: "aAvVbBnNdDeasERggG025698",
+    nombre: "camiseta",
+    precio: 2000
+},
+{
+    id: "aAvvvaaNdDeasERggG025698",
+    nombre: "camiseta",
+    precio: 1500
+}]
 
 
-const arrayOfObjects = [{ id: "r4md0mnumb3r5", nombre: camiseta, precio: 500 },
-{ id: "r4md0mnumb3r52", nombre: pantalon, precio: 700 }]
+
+const productosConDescuento = productos.map(function (elementos) {
+    if (elementos.precio < 1000) return elementos 
+return {
+    ...elementos, 
+    precio: elementos.precio * 0.9 
+    }
+})
+console.log(productosConDescuento)
