@@ -1,0 +1,90 @@
+Map:
+/**Se utiliza map() cuando tenemos un array y queremos obtener un nuevo array de otra cosa.
+ * Arr1 ---> map ---> arr1Mod
+ * Arr1 = []
+ * map = función que se le aplica a cada elemento del array (arr1)
+ * Arr1Mod = Arr1 con los elementos modificados producto de la función que se aplicó
+ *
+ * Sintaxis:
+ * 
+ * const variable = array.map(elemento, índice, arrayOrignal => función)
+ * 
+ * o
+ * 
+ * const variable = array.map( function (elemento, índice, arrayOrignal) {
+ *  return 
+ * })
+ * 
+ * elemento indica cada uno de los elementos dentro del array
+ * índice indica la posición del elemento dentro del array (iniciando en 0)
+ * arrayOriginal se usa para modificar el array que entra en el map (no recomendado)
+ * 
+ * si quiero trabajar con el elemento dentor del array se expresa de la siguiente manera:
+ * 
+ * const variable = array.map(elemento => función)
+ * 
+ * o
+ * 
+ * const variable = array.map(funcion(elemento){
+ * return
+ * }) 
+ * 
+ * si quiero trabajar con el índice o posición de los elementos dentro del array se puede hacer de la siguiente manera:
+ * 
+ * const variable = array.map(función(_, posición){
+ *  return 
+ * })***
+ * en este ejemplo el _ indica todos los elementos y la función se le aplica al índica (si por ejemplo es un array de objetos)
+ * 
+ *
+* */
+
+
+const numeros = [3, 10, 20, 50]
+const dobles = numeros.map(elemento => elemento * 2);
+
+console.log(numeros) // [3, 10, 20, 50] el array original conserva sus valores
+console.log(dobles) // [6, 20, 40, 100] "dobles" ahora contiene los valores del array original después de la función (*2)
+
+
+/**
+ * Sí el método map() se usa sin ninguna función (map() solo) hace lo mismo que slice(), entrega una copia del array original en una nueva variable
+ */
+
+
+const copynumeros = numeros.map()
+console.log(copynumeros)// [3, 10, 20, 50]
+
+
+//ejemplo de map con objetos
+
+const productos = [{
+    id: "ajkhsdjkasdHKJLAHSDKJH",
+    nombre: "camiseta",
+    precio: 500
+},
+{
+    id: "ajkhsdjkasdHKJLAHSDKJH123",
+    nombre: "camiseta",
+    precio: 2000
+}, {
+    id: "ajkhsdjkasdHKJLAHSDKJH456",
+    nombre: "camiseta",
+    precio: 1500
+}]
+
+//con el array anterior y usando map, aplique el 10% de descuento cuando el valor del producto sea 1000 o más
+
+//lo primero sería crear una nueva variable en la que se va a almacernar el producto
+
+const productosConDescuento = productos.map(function(elementos){
+    if(elementos.precio > 1000) return elementos //con esta línea de código nos aseguramos que como retorno de este if solamente vamos a tener los productos cuyo precio sea superior
+                                                 // a 1000
+    return {
+        ...elementos
+        precio: elementos.precio *0.9
+    }
+
+})
+
+console.log(productosConDescuento)
