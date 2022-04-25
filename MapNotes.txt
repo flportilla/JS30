@@ -92,7 +92,8 @@ Vamos a descomponer esta función de la siguiente manera:
 
 >Después del igual viene `productos.map` el array seguido del método `map(funcion (elementos))` en donde `elementos` equivale a cada uno de los elementos dentro del array, puede ser un string, un objeto, un número, un booleano etc. Es el nombre de los item que van dentro del array
 
->`if(elementos.precio < 1000) return elementos` Con esta línea filtramos los elementos dentro del array por precio y devolvemos los que no entran en la condición.
+>`if(elementos.precio < 1000) return elementos` Con esta línea filtramos los elementos dentro del array por precio y devolvemos los que no entran en la condición. El return de esta condición va directamente al return de la función que también se debe agregar.
+Si yo dejo solamente este `return elementos` el resultado de la función sería el elemento que cumple con la condiciión `elementos.precio < 1000 (el primero)` y luego `undefined` hasta que se complete el número de elementos.
 >>Si `elementos.precio` es menor que `1000`, no hace nada y deja ese elemento intacto. Si por el contrario la condición no se cumple, devuelve el valor dentro de `elementos`
  
     return {
