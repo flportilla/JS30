@@ -92,8 +92,8 @@ Vamos a descomponer esta función de la siguiente manera:
 
 >Después del igual viene `productos.map` el array seguido del método `map(funcion (elementos))` en donde `elementos` equivale a cada uno de los elementos dentro del array, puede ser un string, un objeto, un número, un booleano etc. Es el nombre de los item que van dentro del array
 
->`if(elementos.precio < 1000) return elementos` Con esta línea filtramos los elementos dentro del array por precio y devolvemos los que no entran en la condición. El return de esta condición va directamente al return de la función que también se debe agregar.
-Si yo dejo solamente este `return elementos` el resultado de la función sería el elemento que cumple con la condiciión `elementos.precio < 1000 (el primero)` y luego `undefined` hasta que se complete el número de elementos.
+>`if(elementos.precio < 1000) return elementos` Con esta línea filtramos los elementos dentro del array por precio y dejamos por fuera los que no entran en la condición. El return de esta condición va directamente al return de la función que también se debe agregar.
+Si yo dejo solamente este `return elementos` el resultado de la función sería el elemento que cumple con la condiciión `elementos.precio < 1000 (el primero)` y luego `undefined` hasta que se complete el número de elementos dentro del array.
 >>Si `elementos.precio` es menor que `1000`, no hace nada y deja ese elemento intacto. Si por el contrario la condición no se cumple, devuelve el valor dentro de `elementos`
  
     return {
@@ -102,3 +102,8 @@ Si yo dejo solamente este `return elementos` el resultado de la función sería 
         }
 >En esta porción de código se reciben los elementos que no pasaron el filtro (los objetos que tienen un precio > a 1000) y los entrega `...elementos,` y reasigna la propiedad `precio` dentro del objeto a 90% (*0.9) utilizando la expresión `precio: elementos.precio * 0.9`
 
+***Importante***
+>El papel de ese `if` en medio de la función fue algo que me costó mucho entender. En palabras un poco menos profesionales podría decir que: La intención de ese if es quitarme de en medio los casos que no me interesan. 
+>Mi tarea en esta función consiste en modificar los elementos cuyo precio se mayor a 1000, si utilizo una condición para identificar los que no cumplen esa condición y retornarlos inmediatamente es como sacarlos del paso para no confundirme más adelante.
+
+>Si el precio del elemento es menor que 1000, déjelo tal cual está y devuélvamelo tal cual sin modificar, no le haga nada después de haberlo retornado que yo voy a trabajar con el resto de los elementos en el pedazo de código que viene después. 
