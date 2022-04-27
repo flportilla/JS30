@@ -21,7 +21,21 @@
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
+    :root {
+      --base: #202020;
+      --spacing: 10px;
+      --blur: 1px
+    }
+    img{
+      padding : var(--spacing);
+      background: var(--base);
+      filter: blur(var(--blur));
 
+    }
+    .hl {
+      color: var(--base);
+    }
+    
     /*
       misc styles, nothing to do with CSS variables
     */
@@ -45,6 +59,17 @@
   </style>
 
   <script>
+
+    const inputs = document.querySelectorAll('.controls input') //creates a nodeList for the inputs. Looks like an array but is not
+    
+    function handleUpdate(){
+    const suffix = this.dataset.sizing || ''; //data-set crea un objeto con todos los data-* que haya en el documento. "sizing" equivale al data-sizing que está en la línea de los input y contiene el string "px". En esta lína le estamos agregando el valor (string) "px" a la constante suffix. //console.log(suffix) => px
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+    }
+    
+    inputs.forEach(input => input.addEventListener('change', handleUpdate))
+    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate))
+    
   </script>
 
 </body>
