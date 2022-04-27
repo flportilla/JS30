@@ -48,12 +48,12 @@
     > 
 - >Array.prototype.every()
     >
+    >## Uso:
+    >array1.include(f(x));
     >
+    >Recibe una función como parámetro y evalúa si los elementos dentro del array cumplen con la condición o no. Devuelve un true o false según sea el caso. Para que devuelve true todos (every) los elementos dentro del array deben cumplir con la condición
     >
-    >
-    >
-    >
-    > 
+    > ***-***
 - >Array.prototype.fill()
     >
     >
@@ -72,20 +72,20 @@
     > ***-***
 - >Array.prototype.find()
     >
+    >## Uso:
+    >array1.find(element => element > 12)
     >
+    >Devuelve el primer valor dentro del array que cumpla con la condición dentro de la función. En el ejemplo devuelve el primer elemento mayor que 12
     >
+    > ***-***
+- >Array.prototype.findIndex(element => element > 12)
     >
+    >## Uso:
+    >array1.findIndex(element => element > 12)
     >
+    >Devuelve el indice del primer valor dentro del array que cumpla con la condición dentro de la función. En el ejemplo devuelve el indice con el primer elemento que sea mayor que 12
     >
-    > 
-- >Array.prototype.findIndex()
-    >
-    >
-    >
-    >
-    >
-    >
-    > 
+    > ***-***
 - >Array.prototype.flat()
     >
     >
@@ -104,12 +104,12 @@
     > 
 - >Array.prototype.forEach()
     >
+    >## Uso:
+    >array1.forEach(element => {if (element === 'valorQueNecesitoBuscar'){contador++}})
     >
+    >Ciclo que itera por cada uno de lo s elementos dentro del array, útil para contar elementos que cumplan con ciertas condiciones como en el ejemplo. No se puede detener una vez iniciado.
     >
-    >
-    >
-    >
-    > 
+    > ***-***
 - >Array.from()
     >
     >
@@ -152,16 +152,16 @@
     > 
 - >Array.prototype.includes()
     >
+    >## Uso:
+    >array1.includes('elementINeed');
     >
+    >Busca dentro del array el elemento dentro del paréntesis y devuelve false o true dependiendo de si lo encuentra o no.
     >
-    >
-    >
-    >
-    > 
+    > ***-***
 - >Array.prototype.indexOf()
     >
     >## Uso:
-    >console.log(array1.indexOf('elementINeed'));
+    >array1.indexOf('elementINeed');
     >
     >Devuelve el número del índice en donde encuentra la primera coincidencia, si no encuentra nada devuelve un -1. Útil para eliminar duplicados utilizándolo dentro de un filter.
     >
@@ -274,12 +274,12 @@
     > ***-***
 - >Array.prototype.some()
     >
+    >## Uso:
+    >array1.some(f(x));
     >
+    >Recibe una función como parámetro y evalúa si al menos un elemento dentro del array cumplen con la condició o no. Devuelve un true o false según sea el caso. Para que devuelve true al menos uno de los elementos dentro del array deben cumplir con la condición
     >
-    >
-    >
-    >
-    > 
+    > ***-***
 - >Array.prototype.sort()
     >
     >## Uso:
