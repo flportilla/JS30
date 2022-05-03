@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Array Cardio 💪💪</title>
 </head>
+
 <body>
   <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
   <script>
@@ -26,16 +28,46 @@
 
     // Some and Every Checks
     // Array.prototype.some() // is at least one person 19 or older?
-    // Array.prototype.every() // is everyone 19 or older?
+  const isAdult = people.some(function(person){
+    const todaYear = (new Date()).getFullYear()
+    if(todaYear - person.year >= 19) return true
+  })
 
+  const isAdultShort = people.some(person => (new Date()).getFullYear() - person.year >= 19)
+  
+  // console.log({isAdultShort})
+
+    // Array.prototype.every() // is everyone 19 or older?
+const isEveryOneAdult = people.every(function(person){
+  const todaYear = (new Date()).getFullYear()
+  if(todaYear - person.year >= 19) return true
+})
+
+const isEveryOneAdultShort = people.every(person => (new Date()).getFullYear() - person.year)
+
+// console.log(isEveryOneAdult)
     // Array.prototype.find()
     // Find is like filter, but instead returns just the one you are looking for
     // find the comment with the ID of 823423
+
+    const findThis = comments.find(function(comment){
+      if(comment.id === 823423) return true
+    })
+
+    const findThisShort = comments.find(comment => comment.id === 823423)
+
+    // console.log(findThisShort)
 
     // Array.prototype.findIndex()
     // Find the comment with this ID
     // delete the comment with the ID of 823423
 
+    const findIndexOnComments = comments.findIndex(function(comment){
+      if(comment.id === 823423) return true
+    })
+    const finIndexShort = comments.findIndex(comment => 823423 === comment.id)
+console.log(findIndexOnComments)
   </script>
 </body>
+
 </html>
