@@ -44,7 +44,7 @@
       }
     })
 
-    const shortVersiont15= inventors.filter((inventores) =>inventores.year >= 1500 && inventores.year < 1600)
+    const shortVersiont15= inventors.filter((inventores) => inventores.year >= 1500 && inventores.year < 1600)
  
     // console.table(largeVersiont15)
     // console.table(shortVersiont15)
@@ -55,6 +55,7 @@
       return inventores.first + " " + inventores.last
     })
     const shortFAndLNames = inventors.map((inventores) => `${inventores.first} ${inventores.last}`)
+
 
     // console.log(longFAndLNames)
     // console.log(shortFAndLNames)
@@ -77,29 +78,36 @@
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
 
-    const TotalYearsLived = inventors.reduce((total, inventores) => total + (inventores.passed - inventores.year), 0) 
-    //total es el valor a devolver, el acomulado
-    //con el 0 después del paréntesis le decimos a la función que la primera vez total = 0
+    const acomuladorYearsLived = inventors.reduce((acomulador, inventores) => acomulador + (inventores.passed - inventores.year), 0) 
+    //acomulador es el valor a devolver, el acomulado
+    //con el 0 después del paréntesis le decimos a la función que la primera vez acomulador = 0
     //inventores es cada uno de los objetos dentro del array
-    // total (0) + (inventores.passed (día en que murieron) - inventores.year (día en que nacieron)) 
-    //la primera vez el total vale cero y se suma el primer valor 0 + 76. Total ahora vale 76 y así con todos los objetos.
-    // console.log(TotalYearsLived)
+    // acomulador (0) + (inventores.passed (día en que murieron) - inventores.year (día en que nacieron)) 
+    //la primera vez el acomulador vale cero y se suma el primer valor 0 + 76. acomulador ahora vale 76 y así con todos los objetos.
+    // console.log(acomuladorYearsLived)
     
     // 5. Sort the inventors by years lived
     const orderByYearsLived = inventors.sort(function(firstElement, secondElement){
+
       const firstElementAge = firstElement.passed - firstElement.year
       const secondElementAge = secondElement.passed - secondElement.year
+
       return secondElementAge < firstElementAge ? -1 : 1
     })
 
     // console.table(orderByYearsLived)
+
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-    // const createSelector = document.querySelector('.mw-content-ltr')
-    // const selectLinks = [...createSelector.querySelectorAll('a')]
-    // const de = selectLinks
-    //               .map(link => link.textContent)
-    //               .filter(deInText => deInText.includes("de"))
+
+    const createSelector = document.querySelector('.mw-content-ltr')
+    //node
+    const selectLinks = [...createSelector.querySelectorAll('a')] //spread [...elements]
+    //node list - parecido a los array
+    
+    const de = selectLinks
+                  .map(link => link.textContent)
+                  .filter(deInText => deInText.includes("de"))
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
