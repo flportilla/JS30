@@ -7,6 +7,58 @@
 <body>
 <canvas id="draw" width="800" height="800"></canvas>
 <script>
+  const canvasElement = document.querySelector('#draw')
+  const ctx = canvasElement.getContext('2d')
+
+  canvasElement.width = window.innerWidth
+  canvasElement.height = window.innerHeight
+
+  ctx.strokeStyle ="#000000"
+  ctx.lineJoin = 'round'
+  ctx.lineCap = 'round'
+
+  let isDrawing = false;
+  let lastX = 0
+  let lastY = 0
+  let hue = 0
+  let direction = true
+  function draw(e){
+    if(!isDrawing) return; //stop the function from running when there's no clic from the mouse
+    ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`
+    ctx.beginPath()
+    //starts from
+    ctx.moveTo(lastX, lastY)
+    //go to
+    ctx.lineTo(e.offsetX, e.offsetY)
+    ctx.stroke()
+    lastX = e.offsetX
+    lastY = e.offsetY
+    hue++
+    if (hue > 360){
+      hue = 0;
+    }
+    if(ctx.lineWidth >= 100 || ctx.lineWidth <= 1){
+      direction = !direction
+    }
+    if (direction){
+    ctx.lineWidth++   
+    }
+    else {
+      ctx.lineWidth--  
+    }
+  }
+
+canvasElement.addEventListener('mousemove', draw)
+canvasElement.addEventListener('mousedown', (e) => {
+  isDrawing = true
+  lastX = e.offsetX
+  lastY = e.offsetY
+})
+canvasElement.addEventListener('mouseup', () => isDrawing = false)
+canvasElement.addEventListener('mouseout', () => isDrawing = false)
+
+
+
 </script>
 
 <style>
