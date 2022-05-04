@@ -7,6 +7,19 @@
 </head>
 <body>
 <script>
+  const keysPressed = []
+  const kCode = 'flportilla'
+  
+  window.addEventListener('keyup', (e) => {
+    keysPressed.push(e.key)
+    keysPressed.splice(-kCode.length - 1, keysPressed.length - kCode.length)
+    console.log(keysPressed.length)
+    if(keysPressed.join('').includes(kCode)){
+      console.log("Congratulations")
+      cornify_add()
+    }
+  })
+
 </script>
 </body>
 </html>
