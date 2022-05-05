@@ -2,9 +2,7 @@ const albumsInfo = document.querySelectorAll(".hyHkMMynp3uUsmEtOkSN")
 const songsInfo = document.querySelectorAll('.koyeY6AgGRPmyPITi7yO + .JUa6JJNj7R_Y3i4P8YUX')
 
 
-function getArtistDiscography(){
-
-    const discography = []
+ const discography = []
 
 const songs = []
 songsInfo.forEach( (albumContainer, index) =>{
@@ -35,11 +33,9 @@ albumsInfo.forEach((albumInfo, index) => {
         name: albumName.textContent,
         year: parseInt(albumYear.textContent),
         numberOfSongs: stringToNumber,
-        songs: [{
-            name: songs[index][index].name,
-            duration: songs[index][index].duration
-        }]
+        songs: songs[index]
+            
     })
 })
-return discography
-}
+
+
