@@ -1,9 +1,10 @@
 const albumsInfo = document.querySelectorAll(".hyHkMMynp3uUsmEtOkSN")
 const songsInfo = document.querySelectorAll('.koyeY6AgGRPmyPITi7yO + .JUa6JJNj7R_Y3i4P8YUX')
+
+
 function getArtistDiscography(){
 
-
-const discography = []
+    const discography = []
 
 const songs = []
 songsInfo.forEach( (albumContainer, index) =>{
@@ -12,6 +13,7 @@ songsInfo.forEach( (albumContainer, index) =>{
     songsContainer.forEach(row =>{
         const songName = row.querySelector('.t_yrXoUO3qGsJS4Y6iXX')
         const songsDuration = row.querySelector('.Btg2qHSuepFGBG6X0yEN')
+
         if(!songs[index]){
             songs[index] = []
         }
@@ -23,6 +25,7 @@ songsInfo.forEach( (albumContainer, index) =>{
 })
 
 albumsInfo.forEach((albumInfo, index) => {
+
     const albumName = albumInfo.querySelector('a')
     const albumYear = albumInfo.querySelector('.Fb61sprjhh75aOITDnsJ span:nth-child(2)')
     const albumNumberOfSongs = albumInfo.querySelector('.Fb61sprjhh75aOITDnsJ span:nth-child(3)')
