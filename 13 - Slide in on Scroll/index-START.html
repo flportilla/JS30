@@ -58,6 +58,32 @@
       };
     }
 
+    
+
+    const images = document.querySelectorAll(".site-wrap img")
+
+    function activeImages (e){
+      images.forEach(image =>{
+        //half of the image on screen
+        const imageInAt = (window.scrollY + window.innerHeight) - image.height / 2
+        //botton of the image
+        const imageBotton = image.offsetTop + image.height
+        //when the screen is half way to hidde the image again
+        const isHalfShown = imageInAt > image.offsetTop
+        //whe the screen is still showin part of the image
+        const isNotScrolledYet = window.scrollY < imageBotton
+        //statement to add or remove classes acording the state of the image
+        if(isHalfShown && isNotScrolledYet){
+          image.classList.add('active')
+        }
+        else {
+          image.classList.remove('active')
+        }        
+      });
+    }
+    window.addEventListener('scroll',debounce(activeImages))
+
+
   </script>
 
   <style>
