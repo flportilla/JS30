@@ -1,0 +1,20 @@
+html {
+    box-sizing: border-box;
+    background-color: #121212;
+    height: 100%;
+    width: 100%;
+
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+.header {
+
+
+    border: 1px solid rgb(255, 255, 255);
+    height: 40px;
+    width: calc(100% - 12px);
+    position: fixed;
+    
+}
