@@ -26,7 +26,45 @@
     </div>
 
   <script>
-    // 👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀
+    //select all links (a tags)
+    const triggers = document.querySelectorAll('a');
+
+    //create a new span element below the body
+    const highlight = document.createElement('span')
+    highlight.classList.add('highlight')
+    document.body.append(highlight)
+    
+
+    /**
+     * Function that adds a style to the span element
+     * */
+    function highlightLink(){
+      //get all the information of where the element is in the website with 'getBoundingClientRect()'
+      const linkCoords = this.getBoundingClientRect();
+
+      //create our own coordinates for the span element
+      const coords = {
+        height: linkCoords.height,
+        width: linkCoords.width,
+        top: linkCoords.top + window.scrollY,
+        left: linkCoords.left + window.scrollX
+      }
+
+
+      //set the style of the span element, taking the information from the link
+      highlight.style.width = `${coords.width}px`;
+      highlight.style.height = `${coords.height}px`;
+      highlight.style.transform = `translate(${coords.left}px, ${coords.top}px)`;
+
+
+    }
+
+    //loop through all links and add a 'mouseenter' event listener, that triggers the highlightLink function
+    triggers.forEach(a => {
+      a.addEventListener('mouseenter', highlightLink)
+    })
+
+
   </script>
 </body>
 </html>
