@@ -220,6 +220,68 @@
 </style>
 
 <script>
+  const triggers = document.querySelectorAll('.cool > li');
+  const background = document.querySelector('.dropdownBackground');
+  const nav = document.querySelector('nav');
+
+  function handleEnter() {
+    //add the class 'trigger-enter' to the element (list)
+    this.classList.add('trigger-enter');
+
+    //wait 150ms to add the class 'trigger-enter-active' to the same element
+    setTimeout(() => {
+      if(this.classList.contains('trigger-enter')) {
+        
+        this.classList.add('trigger-enter-active');
+      }
+    }, 150);
+
+    //adds the class 'open' to the background
+    background.classList.add('open');
+
+    //select the element whit the class 'open'
+    const dropdown = this.querySelector('.dropdown');
+
+    //calculate the position of the dropdown
+    const dropdownCoords = dropdown.getBoundingClientRect();
+
+    //calculate the position of the nav
+    const navCoords = nav.getBoundingClientRect();
+
+    //calculate the position for the background
+    const realCoods = {
+      height: dropdownCoords.height,
+      width: dropdownCoords.width,
+      top: dropdownCoords.top - navCoords.top,
+      left: dropdownCoords.left - navCoords.left
+    }
+    
+    //set the position for the background
+    background.style.setProperty('height', realCoods.height + 'px');
+    background.style.setProperty('width', realCoods.width + 'px');
+    background.style.setProperty('top', realCoods.top + 'px');
+    background.style.setProperty('left', realCoods.left + 'px');
+
+
+  }
+
+  function handleLeave() {
+    background.classList.remove('open');
+    this.classList.remove('trigger-enter', 'trigger-enter-active');
+  }
+
+  triggers.forEach(trigger => {
+    trigger.addEventListener('mouseenter', handleEnter)
+  })
+
+  triggers.forEach(trigger => {
+    trigger.addEventListener('mouseleave', handleLeave)
+  })
+
+  
+  
+
+
 </script>
 
 </body>
